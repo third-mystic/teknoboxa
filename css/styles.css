@@ -1,0 +1,197 @@
+@font-face {
+    font-family: 'Reboot Crush';
+    src: url('../fonts/Reboot Crush.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Glitch inside';
+    src: url('../fonts/Glitch inside.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    font-family: 'VT323', monospace;
+    display: flex;
+    justify-content: center; /* Center content vertically in column direction */
+    align-items: center;   /* Center content horizontally in column direction */
+    min-height: 100vh;
+    background-color: #1a0a2a; /* Very dark purple/blue for cyberpunk feel */
+    color: #00ff00; /* Neon green default text color */
+    padding: 20px;
+    box-sizing: border-box;
+    flex-direction: column; /* Allow content to flow naturally */
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.content-card {
+    background-color: #0d0413; /* Even darker background for the card */
+    border-radius: 5px; /* Sharper corners */
+    overflow: hidden;
+    color: #00ff00; /* Neon green text color for the card */
+    display: flex;
+    flex-direction: column; /* Mobile: stacking vertically */
+    box-shadow: 0 0 15px #FF00FF; /* Neon magenta glow effect */
+}
+
+.text-section {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center content for mobile */
+    text-align: center; /* Center text for mobile */
+    order: 1; /* Place text section after image on mobile */
+}
+
+.text-section .role {
+    font-family: 'Glitch inside', sans-serif; /* Apply the custom font */
+    font-size: 0.9em;
+    color: #fcfd00; /* Neon yellow */
+    margin-top: 2px; /* Reduce margin to bring role closer */
+    margin-bottom: 10px; /* Add space to the description below */
+    text-shadow: 0 0 5px #fcfd00; /* Subtle glow */
+}
+
+.text-section h1 {
+    font-family: 'Reboot Crush', sans-serif; /* Apply the custom font */
+    font-size: 6vw; /* Further reduced fluid font size for mobile */
+    margin-bottom: 2px; /* Reduce margin to bring role closer */
+    color: #fcfd00; /* Neon yellow */
+    text-shadow: 0 0 10px #fcfd00; /* Stronger glow */
+    padding: 0 10px; /* Add lateral padding for mobile */
+}
+
+.text-section .description {
+    font-size: 1.2em; /* Increased font size */
+    line-height: 1.5;
+    color: #00cc00; /* Softer neon green */
+    margin-bottom: 25px;
+    max-width: 400px; /* Limit description width */
+}
+
+.game-stats {
+    display: block; /* Make it a block-level element to allow centering */
+    text-align: center; /* Center the text within the block */
+    color: #FF00FF; /* Neon magenta */
+    text-shadow: 0 0 5px #FF00FF; /* Subtle glow */
+}
+
+.subscribe-form {
+    display: flex;
+    flex-direction: column; /* Stack vertically on mobile */
+    gap: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 300px; /* Limit width of form on mobile */
+}
+
+.subscribe-form input {
+    background-color: rgba(0, 255, 0, 0.1); /* Semi-transparent neon green */
+    border: 1px solid #00ff00; /* Neon green border */
+    border-radius: 3px; /* Sharper corners */
+    padding: 10px 15px;
+    color: #00ff00; /* Neon green text */
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.subscribe-form input::placeholder {
+    color: rgba(0, 255, 0, 0.7); /* Neon green placeholder */
+}
+
+.subscribe-form button {
+    background-color: #a020f0; /* Neon purple */
+    color: #1a0a2a; /* Dark text */
+    border: none;
+    border-radius: 3px; /* Sharper corners */
+    padding: 12px 20px; /* Increased padding */
+    font-size: 1.1em; /* Slightly larger font */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box; /* Include padding in width */
+    box-shadow: 0 0 8px #a020f0; /* Initial subtle glow */
+    text-shadow: 0 0 5px #a020f0; /* Subtle text glow */
+}
+
+.subscribe-form button:hover {
+    background-color: #b300ff; /* Brighter neon purple on hover */
+    box-shadow: 0 0 15px #b300ff; /* More pronounced neon glow on hover */
+}
+/* Adjust form for desktop */
+@media screen and (min-width: 768px) {
+    .subscribe-form {
+        flex-direction: row; /* Horizontal layout on desktop */
+        max-width: 400px; /* Allow wider form on desktop */
+    }
+
+    .subscribe-form input {
+        flex-grow: 1; /* Allow input to take available space */
+    }
+
+    .subscribe-form button {
+        width: auto; /* Button width adjusts to content */
+        padding: 10px 20px;
+    }
+}
+
+
+
+.image-section {
+    width: 100%;
+    order: 0; /* Place image section before text on mobile */
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Media query for desktop */
+@media screen and (min-width: 768px) {
+    .content-card {
+        flex-direction: row; /* Desktop: side-by-side */
+        max-width: 900px; /* Make the card smaller */
+        margin: 50px auto; /* Center the card and add vertical margin */
+    }
+
+    .text-section {
+        flex: 1;
+        padding: 50px;
+        text-align: left; /* Align text left for desktop */
+        /* align-items: flex-start; - Removed to allow individual centering */
+        order: 0; /* Place text section before image on desktop */
+    }
+
+    .text-section h1 {
+        font-size: 2.5em; /* Smaller font for desktop */
+    }
+
+    .text-section .role {
+        text-align: center; /* Center the role text on desktop */
+    }
+
+    .image-section {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0d0413; /* Dark background for the image section on desktop */
+        order: 1; /* Place image section after text on desktop */
+    }
+
+    .hero-image {
+        border-radius: 0; /* Sharper edges for cyberpunk look */
+    }
+}
