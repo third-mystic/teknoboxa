@@ -56,8 +56,9 @@ body {
     font-size: 0.9em;
     color: #fcfd00; /* Neon yellow */
     margin-top: 2px; /* Reduce margin to bring role closer */
-    margin-bottom: 10px; /* Add space to the description below */
+    margin-bottom: 25px; /* Increased space before subscribe form */
     text-shadow: 0 0 5px #fcfd00; /* Subtle glow */
+    order: 1; /* Place role second on mobile */
 }
 
 .text-section h1 {
@@ -67,6 +68,7 @@ body {
     color: #fcfd00; /* Neon yellow */
     text-shadow: 0 0 10px #fcfd00; /* Stronger glow */
     padding: 0 10px; /* Add lateral padding for mobile */
+    order: 0; /* Place h1 first on mobile */
 }
 
 .text-section .description {
@@ -75,6 +77,7 @@ body {
     color: #00cc00; /* Softer neon green */
     margin-bottom: 25px;
     max-width: 400px; /* Limit description width */
+    order: 3; /* Place description last on mobile */
 }
 
 .game-stats {
@@ -88,9 +91,10 @@ body {
     display: flex;
     flex-direction: column; /* Stack vertically on mobile */
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 10px; /* Consistent space after subscribe form */
     width: 100%;
     max-width: 300px; /* Limit width of form on mobile */
+    order: 2; /* Place form third on mobile */
 }
 
 .subscribe-form input {
@@ -133,6 +137,7 @@ body {
     .subscribe-form {
         flex-direction: row; /* Horizontal layout on desktop */
         max-width: 400px; /* Allow wider form on desktop */
+        order: 3; /* Place form after description on desktop */
     }
 
     .subscribe-form input {
@@ -176,10 +181,16 @@ body {
 
     .text-section h1 {
         font-size: 2.5em; /* Smaller font for desktop */
+        order: 0; /* Place h1 first on desktop */
     }
 
     .text-section .role {
         text-align: center; /* Center the role text on desktop */
+        order: 1; /* Place role second on desktop */
+    }
+
+    .text-section .description {
+        order: 2; /* Place description third on desktop */
     }
 
     .image-section {
