@@ -249,28 +249,21 @@ body {
 
 .video-title {
     font-family: 'Reboot Crush', sans-serif;
-    font-size: 8vw; /* Default fluid font size for mobile */
     color: #fcfd00;
     text-shadow: 0 0 10px #fcfd00;
     margin-bottom: 20px;
     text-align: center;
-    word-break: break-word; /* Ensure long words break to prevent overflow */
+    word-break: normal; /* Override previous break-word */
+    white-space: nowrap; /* Force text to stay on a single line */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis if text overflows (though font size should prevent this) */
     padding: 0 5px; /* Small horizontal padding by default */
 }
 
-/* Adjust for very small screens */
-@media screen and (max-width: 400px) {
+/* Adjust font size for mobile screens */
+@media screen and (max-width: 767px) {
     .video-title {
-        font-size: 1.8em; /* Fixed, smaller font for very narrow screens */
-        padding: 0 5px; /* Small horizontal padding */
-    }
-}
-
-/* Adjust for medium mobile screens */
-@media screen and (min-width: 401px) and (max-width: 767px) {
-    .video-title {
-        font-size: 6vw; /* Smaller fluid font size for typical mobile screens */
-        padding: 0 10px; /* Moderate horizontal padding */
+        font-size: 5vw; /* Conservative font size to ensure it fits on one line */
     }
 }
 
