@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 @font-face {
     font-family: 'Reboot Crush';
     src: url('../fonts/Reboot Crush.ttf') format('truetype');
@@ -21,9 +25,15 @@ body {
     min-height: 100vh;
     background-color: #1a0a2a; /* Very dark purple/blue for cyberpunk feel */
     color: #00ff00; /* Neon green default text color */
-    padding: 20px;
-    box-sizing: border-box;
+    padding: 20px; /* Consistent padding for all screen sizes by default */
     flex-direction: column; /* Allow content to flow naturally */
+}
+
+/* Adjust body padding for desktop */
+@media screen and (min-width: 768px) {
+    body {
+        padding: 50px; /* More padding on desktop */
+    }
 }
 
 .container {
@@ -209,7 +219,7 @@ body {
 
 /* Video Page Styles */
 .video-section {
-    padding: 40px;
+    padding: 20px 0; /* Removed horizontal padding for mobile */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -239,9 +249,40 @@ body {
 
 .video-title {
     font-family: 'Reboot Crush', sans-serif;
-    font-size: 2.5em;
+    font-size: 8vw; /* Default fluid font size for mobile */
     color: #fcfd00;
     text-shadow: 0 0 10px #fcfd00;
     margin-bottom: 20px;
     text-align: center;
+    word-break: break-word; /* Ensure long words break to prevent overflow */
+    padding: 0 5px; /* Small horizontal padding by default */
 }
+
+/* Adjust for very small screens */
+@media screen and (max-width: 400px) {
+    .video-title {
+        font-size: 1.8em; /* Fixed, smaller font for very narrow screens */
+        padding: 0 5px; /* Small horizontal padding */
+    }
+}
+
+/* Adjust for medium mobile screens */
+@media screen and (min-width: 401px) and (max-width: 767px) {
+    .video-title {
+        font-size: 6vw; /* Smaller fluid font size for typical mobile screens */
+        padding: 0 10px; /* Moderate horizontal padding */
+    }
+}
+
+/* Adjust video section padding and title size for desktop */
+@media screen and (min-width: 768px) {
+    .video-section {
+        padding: 50px; /* More padding on desktop */
+    }
+
+    .video-title {
+        font-size: 2.5em; /* Original size for desktop */
+        padding: 0; /* No horizontal padding on desktop, handled by video-section padding */
+    }
+}
+
