@@ -47,12 +47,17 @@ body {
     overflow: hidden;
     color: #00ff00; /* Neon green text color for the card */
     display: flex;
-    flex-direction: column; /* Mobile: stacking vertically */
+    flex-direction: column; /* Stack main-body and footer-bar */
     box-shadow: 0 0 15px #FF00FF; /* Neon magenta glow effect */
 }
 
+.main-body {
+    display: flex;
+    flex-direction: column; /* Mobile: stacking vertically */
+}
+
 .text-section {
-    padding: 0 30px 30px 30px; /* Removed top padding entirely */
+    padding: 30px 30px 30px 30px; /* Added top padding to shift content down */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -118,8 +123,27 @@ body {
 .game-stats {
     display: block; /* Make it a block-level element to allow centering */
     text-align: center; /* Center the text within the block */
-    color: #FF00FF; /* Neon magenta */
-    text-shadow: 0 0 5px #FF00FF; /* Subtle glow */
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1.3em;
+    color: #fcfd00; /* Neon yellow to match the main description */
+    text-shadow: 0 0 5px #fcfd00; /* Subtle glow */
+    margin-top: -5px;
+}
+
+.game-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    order: 4; /* Place after description (which is order: 3) */
+    width: 100%;
+}
+
+.icons-image {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
 }
 
 .subscribe-form {
@@ -187,6 +211,57 @@ body {
 
 
 
+.footer-bar {
+    background-color: #fcfd00; /* Neon yellow to match the title */
+    color: #0d0413; /* Dark text for contrast */
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.footer-text h3 {
+    margin: 0 0 5px 0;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #1a0a2a;
+}
+
+.footer-text p {
+    margin: 0;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1em;
+    color: #1a0a2a;
+}
+
+/* Adjust subscribe form for footer */
+.footer-bar .subscribe-form {
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    order: unset; /* Reset mobile order */
+}
+
+.footer-bar .subscribe-form input {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid #1a0a2a;
+    color: #1a0a2a;
+}
+
+.footer-bar .subscribe-form input::placeholder {
+    color: rgba(26, 10, 42, 0.6);
+}
+
+.footer-bar .subscribe-form button {
+    background-color: #a020f0;
+    color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
 .image-section {
     width: 100%;
     order: 0; /* Place image section before text on mobile */
@@ -196,22 +271,81 @@ body {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 0; /* Sharper edges for cyberpunk look */
+}
+
+.fighter-selection {
+    text-align: center;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+.selection-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #fcfd00; /* Neon yellow to match the main description */
+    text-shadow: 0 0 5px #fcfd00;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.selection-subtitle {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 400;
+    font-size: 1.1em;
+    color: #ffffff; /* White text */
+    opacity: 0.9;
+    line-height: 1.4;
+    margin-top: 5px;
+    margin-bottom: 25px; /* Added space before the next title */
+}
+
+.selection-title.second-title {
+    margin-top: 10px;
+}
+
+.cyberware-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 20px;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+.cyberware-image {
+    max-width: 280px; /* Slightly smaller to fit side-by-side better */
+    width: 100%;
+    height: auto;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.cyberware-image:hover {
+    transform: scale(1.05) translateY(-5px);
+    filter: drop-shadow(0 0 15px rgba(255, 0, 255, 0.8)); /* Neon magenta glow behind the card */
 }
 
 /* Media query for desktop */
 @media screen and (min-width: 768px) {
     .content-card {
-        flex-direction: row; /* Desktop: side-by-side */
-        max-width: 900px; /* Make the card smaller */
-        margin: 0 auto; /* Removed vertical margin, kept centering */
+        max-width: 1000px; /* Slightly wider for the footer layout */
+        margin: 0 auto;
+    }
+
+    .main-body {
+        flex-direction: row; /* Side-by-side image and text */
     }
 
     .text-section {
         flex: 1;
-        padding: 0 50px 50px 50px;
+        padding: 50px 50px 50px 50px;
         text-align: left; /* Align text left for desktop */
         /* align-items: flex-start; - Removed to allow individual centering */
-        order: 0; /* Place text section before image on desktop */
+        order: 1; /* Place text section after image on desktop */
     }
 
     .text-section h1 {
@@ -234,11 +368,23 @@ body {
         align-items: center;
         justify-content: center;
         background-color: #0d0413; /* Dark background for the image section on desktop */
-        order: 1; /* Place image section after text on desktop */
+        order: 0; /* Place image section before text on desktop */
     }
 
-    .hero-image {
-        border-radius: 0; /* Sharper edges for cyberpunk look */
+    .footer-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        padding: 25px 50px;
+    }
+
+    .footer-bar .subscribe-form {
+        flex-direction: column; /* Force vertical layout even on desktop */
+        max-width: 450px;
+    }
+
+    .footer-bar .subscribe-form button {
+        width: 100%; /* Match input width */
     }
 }
 
@@ -301,10 +447,6 @@ body {
     .video-title {
         font-size: 2.5em; /* Original size for desktop */
         padding: 0; /* No horizontal padding on desktop, handled by video-section padding */
-    }
-}
-
-ng: 0; /* No horizontal padding on desktop, handled by video-section padding */
     }
 }
 
