@@ -294,8 +294,8 @@ body {
     color: #ffffff; /* White text */
     opacity: 0.9;
     line-height: 1.4;
-    margin-top: 5px;
-    margin-bottom: 25px; /* Added space before the next title */
+    margin-top: 0;
+    margin-bottom: 0; /* Added space before the next title */
 }
 
 .selection-title.second-title {
@@ -452,7 +452,7 @@ body {
     flex-direction: column; /* Stack image and text vertically on mobile */
     align-items: center;
     gap: 30px;
-    padding: 10px 20px 40px 20px;
+    padding: 0 20px 40px 20px;
     width: 100%;
 }
 
@@ -507,7 +507,6 @@ body {
     color: #fcfd00; /* Neon yellow to match the main description */
     text-shadow: 0 0 5px #fcfd00;
     margin-bottom: 20px;
-    text-transform: uppercase;
     letter-spacing: 2px;
 }
 
@@ -517,7 +516,10 @@ body {
         flex-direction: row; /* Side-by-side on desktop */
         justify-content: center;
         text-align: left;
-        padding: 60px 50px;
+        padding-top: -60px;
+        padding-bottom: 60px;
+        padding-left: 50px;
+        padding-right: 50px;
     }
 
     .gameplay-image {
@@ -534,3 +536,4 @@ body {
         padding-left: 30px;
     }
 }
+
