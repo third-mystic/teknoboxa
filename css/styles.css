@@ -172,9 +172,9 @@ body {
 }
 
 .subscribe-form button {
-    background-color: #a020f0; /* Neon purple */
-    color: #1a0a2a; /* Dark text */
-    border: none;
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text */
+    border: 1px solid #ffffff; /* Neutral white border */
     border-radius: 3px; /* Sharper corners */
     padding: 12px 20px; /* Increased padding */
     font-size: 1.1em; /* Slightly larger font */
@@ -183,14 +183,13 @@ body {
     transition: all 0.3s ease;
     width: 100%;
     box-sizing: border-box; /* Include padding in width */
-    box-shadow: 0 0 8px #a020f0; /* Initial subtle glow */
-    text-shadow: 0 0 5px #a020f0; /* Subtle text glow */
 }
 
 .subscribe-form button:hover {
-    background-color: #b300ff; /* Brighter neon purple on hover */
-    box-shadow: 0 0 15px #b300ff; /* More pronounced neon glow on hover */
+    background-color: #333333; /* Dark gray on hover */
 }
+
+
 /* Adjust form for desktop */
 @media screen and (min-width: 768px) {
     .subscribe-form {
@@ -257,9 +256,6 @@ body {
 }
 
 .footer-bar .subscribe-form button {
-    background-color: #a020f0;
-    color: #ffffff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .image-section {
@@ -449,4 +445,3 @@ body {
         padding: 0; /* No horizontal padding on desktop, handled by video-section padding */
     }
 }
-
