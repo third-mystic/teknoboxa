@@ -56,4 +56,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Scroll-based highlight effect for titles
+    const titles = document.querySelectorAll('.selection-title');
+    
+    // Setup the IntersectionObserver
+    const observerOptions = {
+        root: null, // Viewport
+        rootMargin: '-35% 0px -35% 0px', // Triggers when the element is in the middle 30% of the screen
+        threshold: 0 // Trigger as soon as it crosses the margin
+    };
+
+    const titleObserver = new IntersectionObserver((entries) => {
+        const intersectingEntries = entries.filter(entry => entry.isIntersecting);
+        if (intersectingEntries.length > 0) {
+            // Remove active class from all titles
+            titles.forEach(t => t.classList.remove('scrolled-active'));
+            // Add active class to the most recently intersecting title
+            intersectingEntries[intersectingEntries.length - 1].target.classList.add('scrolled-active');
+        }
+    }, observerOptions);
+
+    titles.forEach(title => {
+        titleObserver.observe(title);
+    });
 });
+

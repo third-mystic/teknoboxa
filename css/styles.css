@@ -291,7 +291,7 @@ body {
     border-radius: 3px;
 }
 
-.selection-title:hover {
+.selection-title.scrolled-active {
     color: #ffffff;
     background-color: #0000ff;
     text-shadow: none;
