@@ -634,7 +634,7 @@ body {
 
 .brand-subtitle {
     font-family: 'Glitch Inside', sans-serif;
-    font-size: clamp(0.5rem, 2vw, 1.2rem);
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
     color: #fcfd00;
     text-shadow: 0 0 8px #fcfd00;
     margin: 5px 0 0 0;
