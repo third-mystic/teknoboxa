@@ -83,16 +83,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Add active class
                 targetTitle.classList.add('scrolled-active');
                 
-                // Apply a one-time glitch effect
-                const glitchType = Math.floor(Math.random() * 4) + 1;
-                const glitchClass = `glitch-${glitchType}`;
-                targetTitle.classList.add(glitchClass);
+                // Function to apply a quick glitch
+                const applyGlitch = () => {
+                    // Only glitch if still active
+                    if (!targetTitle.classList.contains('scrolled-active')) return;
+                    
+                    const glitchType = Math.floor(Math.random() * 4) + 1;
+                    const glitchClass = `glitch-${glitchType}`;
+                    targetTitle.classList.add(glitchClass);
+                    
+                    // Remove the glitch quickly
+                    const duration = Math.floor(Math.random() * 100) + 50;
+                    setTimeout(() => {
+                        targetTitle.classList.remove(glitchClass);
+                    }, duration);
+                };
+
+                // Trigger first glitch immediately
+                applyGlitch();
                 
-                // Remove the glitch quickly
-                const duration = Math.floor(Math.random() * 100) + 50;
-                setTimeout(() => {
-                    targetTitle.classList.remove(glitchClass);
-                }, duration);
+                // Trigger second glitch after exactly 2 seconds
+                setTimeout(applyGlitch, 2000);
             }
         }
     }, observerOptions);

@@ -4,16 +4,12 @@
 
 @font-face {
     font-family: 'Reboot Crush';
-    src: url('../fonts/Reboot Crush.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    src: url('../fonts/reboot-crush.ttf');
 }
 
 @font-face {
-    font-family: 'Glitch inside';
-    src: url('../fonts/Glitch inside.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'Glitch Inside';
+    src: url('../fonts/glitch-inside.otf');
 }
 
 body {
@@ -67,7 +63,7 @@ body {
 }
 
 .text-section .role {
-    font-family: 'Glitch inside', sans-serif; /* Apply the custom font */
+    font-family: 'Glitch Inside', sans-serif; /* Apply the custom font */
     font-size: 0.9em;
     color: #fcfd00; /* Neon yellow */
     margin-top: 2px; /* Reduce margin to bring role closer */
@@ -222,6 +218,41 @@ body {
     text-align: center;
 }
 
+.bottom-signup {
+    border-top: 2px solid #000; /* Stronger separation at the bottom */
+}
+
+.site-footer {
+    background-color: #000;
+    color: #888;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+.site-footer a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: #fcfd00;
+}
+
+@media screen and (max-width: 480px) {
+    .site-footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        padding: 20px;
+    }
+}
+
 .footer-text h3 {
     margin: 0 0 5px 0;
     font-family: 'Rajdhani', sans-serif;
@@ -272,7 +303,7 @@ body {
 
 .fighter-selection {
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px 20px 0 20px;
     width: 100%;
 }
 
@@ -546,8 +577,73 @@ body {
     letter-spacing: 2px;
 }
 
+.feature-description {
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: left;
+    margin: 0;
+}
+
+.final-call-to-action {
+    text-align: center;
+    padding: 20px 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.final-call-to-action > p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #fcfd00;
+    text-shadow: 0 0 10px rgba(252, 253, 0, 0.5);
+    line-height: 1.4;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.brand-footer {
+    margin-top: 30px;
+    text-align: center;
+    width: 100%;
+    padding: 0 40px 0 20px; /* Increased right margin specifically as requested */
+    box-sizing: border-box;
+}
+
+.brand-title {
+    font-family: 'Reboot Crush', sans-serif;
+    font-size: clamp(0.8rem, 5.5vw, 3.5rem);
+    color: #fcfd00;
+    text-shadow: 0 0 15px #fcfd00;
+    margin: 0;
+    line-height: 1.1;
+    display: block;
+    max-width: 100%;
+}
+
+.brand-subtitle {
+    font-family: 'Glitch Inside', sans-serif;
+    font-size: clamp(0.5rem, 2vw, 1.2rem);
+    color: #fcfd00;
+    text-shadow: 0 0 8px #fcfd00;
+    margin: 5px 0 0 0;
+    letter-spacing: clamp(1px, 0.8vw, 4px);
+}
+
+
 /* Desktop styles for gameplay section */
 @media screen and (min-width: 768px) {
+    .fighter-selection {
+        padding: 40px 20px 20px 20px;
+    }
+
+    .final-call-to-action {
+        padding: 40px 20px;
+    }
+
     .gameplay-section {
         flex-direction: row; /* Side-by-side on desktop */
         justify-content: center;
@@ -558,14 +654,14 @@ body {
         padding-right: 50px;
     }
 
-    .gameplay-text {
+    .gameplay-section .gameplay-text {
         flex: 1;
         max-width: 500px; /* Allow text to be larger on desktop */
         text-align: left;
         padding-right: 30px;
     }
 
-    .gameplay-image {
+    .gameplay-section .gameplay-image {
         flex: 1;
         max-width: 500px; /* Allow image to be larger on desktop */
         text-align: left; /* Align image to the left within its flex item */
@@ -576,7 +672,7 @@ body {
 /* Gameplay Section Reverse Styles */
 .gameplay-section-reverse {
     display: flex;
-    flex-direction: column; /* Stack image and text vertically on mobile */
+    flex-direction: column-reverse; /* Stack text above image on mobile */
     align-items: center;
     gap: 30px;
     padding: 0 20px 40px 20px;
