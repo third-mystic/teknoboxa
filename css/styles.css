@@ -185,6 +185,13 @@ body {
     background-color: #333333; /* Dark gray on hover */
 }
 
+.success-message {
+    color: #1a0a2a;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 10px 0;
+}
 
 /* Adjust form for desktop */
 @media screen and (min-width: 768px) {
@@ -361,7 +368,7 @@ body {
     opacity: 0.9;
     line-height: 1.4;
     margin-top: 0;
-    margin-bottom: 0; /* Added space before the next title */
+    margin-bottom: 30px; /* Increased space before the next section */
 }
 
 .selection-title.second-title {
@@ -600,7 +607,7 @@ body {
     font-size: 1.8em;
     font-weight: 600;
     color: #fcfd00;
-    text-shadow: 0 0 10px rgba(252, 253, 0, 0.5);
+    text-shadow: 0 0 5px #fcfd00;
     line-height: 1.4;
     letter-spacing: 1px;
     margin: 0;

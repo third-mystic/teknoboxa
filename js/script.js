@@ -1,61 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const subscribeForm = document.getElementById('subscribeForm');
-    const emailInput = document.getElementById('emailInput');
+    // Select all subscription forms on the page
+    const subscribeForms = document.querySelectorAll('.subscribe-form');
 
-    if (subscribeForm && emailInput) {
-        subscribeForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Prevent default form submission
+    subscribeForms.forEach(form => {
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
 
-            const email = emailInput.value;
-            const submitButton = subscribeForm.querySelector('button[type="submit"]');
+            const emailInput = form.querySelector('input[type="email"]');
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton ? submitButton.textContent : 'Signup';
 
-            // Optionally disable input and button during submission
+            if (!emailInput || !submitButton) return;
+
+            // Prepare the data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Disable UI during submission
             emailInput.disabled = true;
-            if (submitButton) {
-                submitButton.disabled = true;
-                submitButton.textContent = 'Sending...';
-            }
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
 
             try {
-                const response = await fetch(subscribeForm.action, {
+                const response = await fetch(form.action, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
-                    body: JSON.stringify({ email: email })
+                    body: formData
                 });
 
                 if (response.ok) {
-                    emailInput.placeholder = 'See you soon';
-                    emailInput.value = ''; // Clear the input field
-                    if (submitButton) {
-                        submitButton.textContent = 'Success!';
-                    }
+                    // Success: replace the form content
+                    form.innerHTML = '<div class="success-message">You are signed up!</div>';
                 } else {
-                    // Handle non-OK responses from Formspree (e.g., validation errors)
-                    const errorData = await response.json();
-                    console.error('Formspree error:', errorData);
-                    alert('Oops! There was a problem submitting your email. Please try again.');
-                    // Re-enable for user to try again
-                    emailInput.disabled = false;
-                    if (submitButton) {
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Wishlist Now!';
-                    }
+                    throw new Error('Form submission failed');
                 }
             } catch (error) {
-                console.error('Network error:', error);
-                alert('Oops! A network error occurred. Please check your connection.');
-                // Re-enable for user to try again
+                console.error('Submission error:', error);
+                alert('Oops! There was a problem. Please try again.');
+                
+                // Re-enable for retry
                 emailInput.disabled = false;
-                if (submitButton) {
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Wishlist Now!';
-                }
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
             }
         });
-    }
+    });
 
     // Scroll-based highlight effect for titles
     const titles = document.querySelectorAll('.selection-title');
