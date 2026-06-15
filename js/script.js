@@ -93,14 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll-based "popping" effect for cards on mobile
     const cards = document.querySelectorAll('.selection-card');
     const containers = document.querySelectorAll('.selection-container');
+    let lastActiveCard = null;
     
     const updateActiveCard = () => {
         if (window.innerWidth > 767) {
             cards.forEach(card => card.classList.remove('scrolled-pop'));
+            lastActiveCard = null;
             return;
         }
 
-        let mostCenteredCard = null;
+        let currentCandidate = null;
         let minDistance = Infinity;
         const viewportCenter = window.innerHeight / 2;
 
@@ -109,27 +111,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardCenter = rect.top + rect.height / 2;
             const distance = Math.abs(viewportCenter - cardCenter);
 
-            // Narrower zone: only consider cards within the central 40% of the viewport
-            // and require them to be relatively close to the center (e.g., within 150px)
+            // Narrower zone for activation
             const inZone = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
             const isCloseEnough = distance < 150; 
 
             if (inZone && isCloseEnough && distance < minDistance) {
-                // Check if this card's section title is active
                 const container = card.closest('.selection-container');
                 const containerIndex = Array.from(containers).indexOf(container);
                 const relatedTitle = titles[containerIndex];
                 
-                // Only allow the card to be active if its title is already scrolled-active
                 if (relatedTitle && relatedTitle.classList.contains('scrolled-active')) {
                     minDistance = distance;
-                    mostCenteredCard = card;
+                    currentCandidate = card;
                 }
             }
         });
 
+        // Only update the active card if we found a new valid candidate
+        // This makes the effect "sticky" until the next card triggers
+        if (currentCandidate && currentCandidate !== lastActiveCard) {
+            lastActiveCard = currentCandidate;
+        }
+
         cards.forEach(card => {
-            if (card === mostCenteredCard) {
+            if (card === lastActiveCard) {
                 card.classList.add('scrolled-pop');
             } else {
                 card.classList.remove('scrolled-pop');
@@ -149,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     window.addEventListener('resize', updateActiveCard);
-    // Initial call and delayed call to account for image loading
+    // Initial call
     updateActiveCard();
     window.addEventListener('load', updateActiveCard);
 
@@ -162,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cards.forEach(c => {
                 c.classList.remove('scrolled-pop');
             });
+            lastActiveCard = null;
         }
     });
 });
