@@ -405,14 +405,19 @@ body {
 /* Base popping effect class for JS to trigger */
 .selection-card.scrolled-pop {
     transform: scale(1.05) translateY(-5px);
-    filter: drop-shadow(0 0 15px rgba(255, 0, 255, 0.8)); /* Neon magenta glow behind the card */
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8); /* Using box-shadow instead of drop-shadow for better iOS support */
+    z-index: 10; /* Ensure active card is above others */
+    position: relative;
+    will-change: transform, box-shadow;
 }
 
 /* Hover effect for devices that support hover */
 @media (hover: hover) {
     .selection-card:hover {
         transform: scale(1.05) translateY(-5px);
-        filter: drop-shadow(0 0 15px rgba(255, 0, 255, 0.8));
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+        z-index: 10;
+        position: relative;
     }
 }
 

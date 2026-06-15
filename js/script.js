@@ -73,6 +73,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Add active class
                 targetTitle.classList.add('scrolled-active');
+
+                // Synchronize the first card of the section on mobile
+                if (window.matchMedia('(max-width: 767px)').matches) {
+                    const titleIndex = Array.from(titles).indexOf(targetTitle);
+                    const cardContainers = document.querySelectorAll('.selection-container');
+                    
+                    // Only for the first two sections (Fighters and Cyberware)
+                    if (titleIndex >= 0 && titleIndex < 2 && cardContainers[titleIndex]) {
+                        const firstCard = cardContainers[titleIndex].querySelector('.selection-card');
+                        if (firstCard) {
+                            // Remove pop from all cards first to avoid multiple active cards
+                            document.querySelectorAll('.selection-card').forEach(c => c.classList.remove('scrolled-pop'));
+                            firstCard.classList.add('scrolled-pop');
+                        }
+                    }
+                }
                 
                 // Function to apply a quick glitch
                 const applyGlitch = () => {
@@ -104,55 +120,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Scroll-based "popping" effect for cards on mobile
-    const cards = document.querySelectorAll('.selection-card');
-    
-    const updateActiveCard = () => {
-        if (window.innerWidth > 767) {
-            cards.forEach(card => card.classList.remove('scrolled-pop'));
-            return;
-        }
+    if (window.matchMedia('(max-width: 767px)').matches) {
+        const cards = document.querySelectorAll('.selection-card');
+        
+        const cardObserverOptions = {
+            root: null,
+            rootMargin: '-25% 0px -25% 0px', 
+            threshold: 0.2
+        };
 
-        let mostCenteredCard = null;
-        let minDistance = Infinity;
-        const viewportCenter = window.innerHeight / 2;
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const card = entry.target;
+                const container = card.closest('.selection-container');
+                const containers = Array.from(document.querySelectorAll('.selection-container'));
+                const containerIndex = containers.indexOf(container);
+                const isFirstCard = container && container.querySelector('.selection-card') === card;
+                
+                // If it's the first card and its title is active, let the titleObserver handle it
+                // unless we are scrolling away from the title zone.
+                const relatedTitle = titles[containerIndex];
+                const isTitleActive = relatedTitle && relatedTitle.classList.contains('scrolled-active');
 
-        cards.forEach(card => {
-            const rect = card.getBoundingClientRect();
-            const cardCenter = rect.top + rect.height / 2;
-            const distance = Math.abs(viewportCenter - cardCenter);
-
-            // Only consider cards that are largely within the viewport
-            const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
-
-            if (isVisible && distance < minDistance) {
-                minDistance = distance;
-                mostCenteredCard = card;
-            }
-        });
-
-        cards.forEach(card => {
-            if (card === mostCenteredCard) {
-                card.classList.add('scrolled-pop');
-            } else {
-                card.classList.remove('scrolled-pop');
-            }
-        });
-    };
-
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        if (!scrollTimeout) {
-            scrollTimeout = requestAnimationFrame(() => {
-                updateActiveCard();
-                scrollTimeout = null;
+                if (entry.isIntersecting) {
+                    card.classList.add('scrolled-pop');
+                } else {
+                    // Only remove if not the currently "synced" first card
+                    if (!(isFirstCard && isTitleActive)) {
+                        card.classList.remove('scrolled-pop');
+                    }
+                }
             });
-        }
-    });
-    
-    window.addEventListener('resize', updateActiveCard);
-    // Run once on load and when images are likely loaded
-    updateActiveCard();
-    window.addEventListener('load', updateActiveCard);
+        }, cardObserverOptions);
+
+        cards.forEach(card => {
+            cardObserver.observe(card);
+        });
+    }
 
     // Clear active effects when at the very top of the page
     window.addEventListener('scroll', () => {
