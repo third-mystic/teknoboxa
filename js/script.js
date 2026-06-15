@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll-based "popping" effect for cards on mobile
     const cards = document.querySelectorAll('.selection-card');
+    const containers = document.querySelectorAll('.selection-container');
     
     const updateActiveCard = () => {
         if (window.innerWidth > 767) {
@@ -108,12 +109,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardCenter = rect.top + rect.height / 2;
             const distance = Math.abs(viewportCenter - cardCenter);
 
-            // Only consider cards within the central 60% of the viewport
+            // Only consider cards within a reasonable viewing zone
             const inZone = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
 
             if (inZone && distance < minDistance) {
-                minDistance = distance;
-                mostCenteredCard = card;
+                // Check if this card's section title is active
+                const container = card.closest('.selection-container');
+                const containerIndex = Array.from(containers).indexOf(container);
+                const relatedTitle = titles[containerIndex];
+                
+                // Only allow the card to be active if its title is already scrolled-active
+                if (relatedTitle && relatedTitle.classList.contains('scrolled-active')) {
+                    minDistance = distance;
+                    mostCenteredCard = card;
+                }
             }
         });
 
