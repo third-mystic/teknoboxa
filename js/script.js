@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardCenter = rect.top + rect.height / 2;
             const distance = Math.abs(viewportCenter - cardCenter);
 
-            // Narrower zone for activation
+            // Narrower zone for activation (central 40%)
             const inZone = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
             const isCloseEnough = distance < 150; 
 
@@ -120,22 +120,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 const containerIndex = Array.from(containers).indexOf(container);
                 const relatedTitle = titles[containerIndex];
                 
-                if (relatedTitle && relatedTitle.classList.contains('scrolled-active')) {
+                // Allow activation if the title is currently active (blue highlight)
+                // OR if the title is already above the viewport center (meaning we've passed it)
+                const titleRect = relatedTitle ? relatedTitle.getBoundingClientRect() : null;
+                const isTitleActive = relatedTitle && relatedTitle.classList.contains('scrolled-active');
+                const isPastTitle = titleRect && titleRect.top < viewportCenter;
+
+                if (isTitleActive || isPastTitle) {
                     minDistance = distance;
                     currentCandidate = card;
                 }
             }
         });
 
-        // Only update the active card if we found a new valid candidate
-        // This makes the effect "sticky" until the next card triggers
+        // Update lastActiveCard only if we found a new valid candidate
         if (currentCandidate && currentCandidate !== lastActiveCard) {
             lastActiveCard = currentCandidate;
         }
 
         cards.forEach(card => {
             if (card === lastActiveCard) {
-                card.classList.add('scrolled-pop');
+                const rect = card.getBoundingClientRect();
+                // Check if card is at least partially visible on screen
+                const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+                
+                if (isVisible) {
+                    card.classList.add('scrolled-pop');
+                } else {
+                    card.classList.remove('scrolled-pop');
+                }
             } else {
                 card.classList.remove('scrolled-pop');
             }
