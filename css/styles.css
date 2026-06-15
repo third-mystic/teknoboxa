@@ -148,7 +148,7 @@ body {
 }
 
 .final-call-to-action .game-icons {
-    margin-bottom: -15px; /* Applied negative margin to reduce space even further */
+    margin-bottom: 5px; /* Reduced space to tighten layout while preventing collision */
 }
 
 .subscribe-form {
@@ -319,7 +319,7 @@ body {
 
 .fighter-selection {
     text-align: center;
-    padding: 40px 20px 0 20px;
+    padding: 40px 20px 30px 20px; /* Added bottom padding for better spacing on mobile */
     width: 100%;
 }
 
@@ -402,9 +402,18 @@ body {
     cursor: pointer;
 }
 
-.selection-card:hover {
+/* Base popping effect class for JS to trigger */
+.selection-card.scrolled-pop {
     transform: scale(1.05) translateY(-5px);
     filter: drop-shadow(0 0 15px rgba(255, 0, 255, 0.8)); /* Neon magenta glow behind the card */
+}
+
+/* Hover effect for devices that support hover */
+@media (hover: hover) {
+    .selection-card:hover {
+        transform: scale(1.05) translateY(-5px);
+        filter: drop-shadow(0 0 15px rgba(255, 0, 255, 0.8));
+    }
 }
 
 /* Media query for desktop */
@@ -605,7 +614,7 @@ body {
 
 .final-call-to-action {
     text-align: center;
-    padding: 20px 20px 0 20px;
+    padding: 20px 20px 10px 20px; /* Reduced bottom padding to tighten layout */
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -613,12 +622,12 @@ body {
 
 .final-call-to-action > p {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 1.8em;
+    font-size: 1.5em; /* Reduced from 1.8em to match other titles */
     font-weight: 600;
     color: #fcfd00;
     text-shadow: 0 0 5px #fcfd00;
     line-height: 1.4;
-    letter-spacing: 1px;
+    letter-spacing: 2px; /* Increased from 1px to match other titles */
     margin: 0;
 }
 

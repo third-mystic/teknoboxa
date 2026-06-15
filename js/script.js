@@ -103,6 +103,31 @@ document.addEventListener('DOMContentLoaded', () => {
         titleObserver.observe(title);
     });
 
+    // Scroll-based "popping" effect for cards on mobile
+    if (window.matchMedia('(max-width: 767px)').matches) {
+        const cards = document.querySelectorAll('.selection-card');
+        
+        const cardObserverOptions = {
+            root: null,
+            rootMargin: '-25% 0px -25% 0px', // Triggers when the card enters the central 50% of the screen
+            threshold: 0.2 // Trigger when 20% of the card is in the central zone
+        };
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scrolled-pop');
+                } else {
+                    entry.target.classList.remove('scrolled-pop');
+                }
+            });
+        }, cardObserverOptions);
+
+        cards.forEach(card => {
+            cardObserver.observe(card);
+        });
+    }
+
     // Clear active effects when at the very top of the page
     window.addEventListener('scroll', () => {
         if (window.scrollY === 0) {
