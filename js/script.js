@@ -104,35 +104,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Scroll-based "popping" effect for cards on mobile
-    if (window.matchMedia('(max-width: 767px)').matches) {
-        const cards = document.querySelectorAll('.selection-card');
-        
-        const cardObserverOptions = {
-            root: null,
-            rootMargin: '-25% 0px -25% 0px', // Triggers when the card enters the central 50% of the screen
-            threshold: 0.2 // Trigger when 20% of the card is in the central zone
-        };
+    const cards = document.querySelectorAll('.selection-card');
+    
+    const updateActiveCard = () => {
+        if (window.innerWidth > 767) {
+            cards.forEach(card => card.classList.remove('scrolled-pop'));
+            return;
+        }
 
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('scrolled-pop');
-                } else {
-                    entry.target.classList.remove('scrolled-pop');
-                }
-            });
-        }, cardObserverOptions);
+        let mostCenteredCard = null;
+        let minDistance = Infinity;
+        const viewportCenter = window.innerHeight / 2;
 
         cards.forEach(card => {
-            cardObserver.observe(card);
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(viewportCenter - cardCenter);
+
+            // Only consider cards that are largely within the viewport
+            const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
+
+            if (isVisible && distance < minDistance) {
+                minDistance = distance;
+                mostCenteredCard = card;
+            }
         });
-    }
+
+        cards.forEach(card => {
+            if (card === mostCenteredCard) {
+                card.classList.add('scrolled-pop');
+            } else {
+                card.classList.remove('scrolled-pop');
+            }
+        });
+    };
+
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (!scrollTimeout) {
+            scrollTimeout = requestAnimationFrame(() => {
+                updateActiveCard();
+                scrollTimeout = null;
+            });
+        }
+    });
+    
+    window.addEventListener('resize', updateActiveCard);
+    // Run once on load and when images are likely loaded
+    updateActiveCard();
+    window.addEventListener('load', updateActiveCard);
 
     // Clear active effects when at the very top of the page
     window.addEventListener('scroll', () => {
         if (window.scrollY === 0) {
             titles.forEach(t => {
                 t.classList.remove('scrolled-active', 'glitch-1', 'glitch-2', 'glitch-3', 'glitch-4');
+            });
+            document.querySelectorAll('.selection-card').forEach(c => {
+                c.classList.remove('scrolled-pop');
             });
         }
     });
