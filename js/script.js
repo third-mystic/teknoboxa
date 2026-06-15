@@ -109,10 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardCenter = rect.top + rect.height / 2;
             const distance = Math.abs(viewportCenter - cardCenter);
 
-            // Only consider cards within a reasonable viewing zone
-            const inZone = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
+            // Narrower zone: only consider cards within the central 40% of the viewport
+            // and require them to be relatively close to the center (e.g., within 150px)
+            const inZone = rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+            const isCloseEnough = distance < 150; 
 
-            if (inZone && distance < minDistance) {
+            if (inZone && isCloseEnough && distance < minDistance) {
                 // Check if this card's section title is active
                 const container = card.closest('.selection-container');
                 const containerIndex = Array.from(containers).indexOf(container);
