@@ -137,9 +137,18 @@ body {
 }
 
 .icons-image {
-    max-width: 200px;
+    max-width: 200px; /* Restored original size for top icons */
     width: 100%;
     height: auto;
+}
+
+/* Specific size and spacing for icons at the bottom of the page */
+.final-call-to-action .icons-image {
+    max-width: 150px; /* Increased slightly from 120px */
+}
+
+.final-call-to-action .game-icons {
+    margin-bottom: -15px; /* Applied negative margin to reduce space even further */
 }
 
 .subscribe-form {
@@ -596,7 +605,7 @@ body {
 
 .final-call-to-action {
     text-align: center;
-    padding: 20px 20px;
+    padding: 20px 20px 0 20px;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -614,7 +623,8 @@ body {
 }
 
 .brand-footer {
-    margin-top: 30px;
+    margin-top: -15px; /* Changed to negative to move it further up */
+    margin-bottom: 25px; /* Added space between branding and the next paragraph */
     text-align: center;
     width: 100%;
     padding: 9 40px 0 20px; /* Increased right padding to shift text further to the left */
@@ -634,7 +644,7 @@ body {
 
 .brand-subtitle {
     font-family: 'Glitch Inside', sans-serif;
-    font-size: clamp(0.5rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 3vw, 1.8rem); /* Increased from clamp(0.8rem, 2vw, 1.2rem) */
     color: #fcfd00;
     text-shadow: 0 0 8px #fcfd00;
     margin: 5px 0 0 0;
@@ -709,5 +719,84 @@ body {
         max-width: 500px;
         text-align: left;
         padding-left: 30px;
+    }
+}
+
+/* Policy Page Styles */
+.policy-section {
+    padding: 40px 20px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.policy-title {
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2.5em;
+    font-family: 'Rajdhani', sans-serif;
+    text-shadow: none;
+}
+
+.policy-content {
+    line-height: 1.6;
+    font-size: 1.1em;
+}
+
+.policy-content h2 {
+    color: #ffffff;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.policy-content h3 {
+    color: #ffffff;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.policy-content p {
+    margin-bottom: 15px;
+}
+
+.policy-content ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.policy-content li {
+    margin-bottom: 8px;
+}
+
+.back-link {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.back-link a {
+    color: #fcfd00;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #fcfd00;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.back-link a:hover {
+    background-color: #fcfd00;
+    color: #0d0413;
+    box-shadow: 0 0 10px #fcfd00;
+}
+
+@media screen and (min-width: 768px) {
+    .policy-section {
+        padding: 60px 50px;
     }
 }
