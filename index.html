@@ -12,14 +12,14 @@
     <meta property="og:url" content="https://teknoboxa.com/">
     <meta property="og:title" content="Teknoboxa - Neon Arenas">
     <meta property="og:description" content="Teknoboxa - Neon Arenas: A brutal cyberpunk fighting card game. Face off as a cyber-enhanced fighter in tactical combat with unique talents and deadly cyberware.">
-    <meta property="og:image" content="https://teknoboxa.com/img/teknoboxa_square_box.png">
+    <meta property="og:image" content="https://teknoboxa.com/img/teknoboxa_square_box.webp">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://teknoboxa.com/">
     <meta property="twitter:title" content="Teknoboxa - Neon Arenas">
     <meta property="twitter:description" content="Teknoboxa - Neon Arenas: A brutal cyberpunk fighting card game. Face off as a cyber-enhanced fighter in tactical combat with unique talents and deadly cyberware.">
-    <meta property="twitter:image" content="https://teknoboxa.com/img/teknoboxa_square_box.png">
+    <meta property="twitter:image" content="https://teknoboxa.com/img/teknoboxa_square_box.webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,101 +30,114 @@
 <body>
     <div class="container">
         <div class="content-card">
-            <div class="main-body">
-                <div class="text-section">
-                    <p class="description"><span class="main-description">Defeat Your Opponent in this Brutal Cyberpunk Fighting Game</span> <br><span class="sub-description">Teknoboxa - Neon Arenas is a <strong>pocket-sized fighting card game</strong> where you face off as a cyber-enhanced fighter against your opponent.</span><span class="sub-description second-sentence">Engage in <strong>tactical combat</strong> through your fighter's unique talent, powerful combos, 2D movement, and deadly cyberware.</span><br><span class="game-stats">Are you ready to step into the Arena?</span></p>
-                    <div class="game-icons">
-                        <img src="img/box_icons_yellow.png" alt="Game Icons" class="icons-image">
+            <!-- Header Landmark with Hero Section & Top Signup Form -->
+            <header class="main-header">
+                <div class="main-body">
+                    <div class="text-section">
+                        <h1>TEKNOBOXA</h1>
+                        <div class="role">NEON ARENAS</div>
+                        <p class="description"><span class="main-description">Defeat Your Opponent in this Brutal Cyberpunk Fighting Game</span> <br><span class="sub-description">Teknoboxa - Neon Arenas is a <strong>pocket-sized fighting card game</strong> where you face off as a cyber-enhanced fighter against your opponent.</span><span class="sub-description second-sentence">Engage in <strong>tactical combat</strong> through your fighter's unique talent, powerful combos, 2D movement, and deadly cyberware.</span><br><span class="game-stats">Are you ready to step into the Arena?</span></p>
+                        <div class="game-icons">
+                            <img src="img/box_icons_yellow.webp" alt="Game Icons" class="icons-image">
+                        </div>
+                    </div>
+                    <div class="image-section">
+                        <img src="img/image_1.webp" alt="Teknoboxa - Neon Arenas" class="hero-image">
                     </div>
                 </div>
-                <div class="image-section">
-                    <img src="img/image_1.png" alt="Teknoboxa - Neon Arenas" class="hero-image">
+                <div class="footer-bar">
+                    <div class="footer-text">
+                        <h2>Get an early VIP Bonus!</h2>
+                        <p>Sign up now to receive an exclusive <strong>Digital Zine</strong> when we launch!</p>
+                    </div>
+                    <form id="subscribeForm" class="subscribe-form" action="https://formspree.io/f/mkovywpg" method="POST">
+                        <input id="emailInput" name="email" type="email" placeholder="Enter your email" aria-label="Email address" required>
+                        <button type="submit">Signup for our launch!</button>
+                    </form>
                 </div>
-            </div>
-            <div class="footer-bar">
-                <div class="footer-text">
-                    <h3>Get an early VIP Bonus!</h3>
-                    <p>Sign up now to receive an exclusive <strong>Digital Zine</strong> when we launch!</p>
-                </div>
-                <form id="subscribeForm" class="subscribe-form" action="https://formspree.io/f/mkovywpg" method="POST">
-                    <input id="emailInput" type="email" placeholder="Enter your email" required>
-                    <button type="submit">Signup for our launch!</button>
-                </form>
-            </div>
-            <div class="fighter-selection">
-                <h2 class="selection-title">Select Your Fighter</h2>
-                <p class="selection-subtitle">Choose from ten Teknoboxers, each with a unique talent</p>
-                <div class="selection-container">
-                    <img src="img/fighter_1.png" alt="Fighter 1" class="selection-card">
-                    <img src="img/fighter_2.png" alt="Fighter 2" class="selection-card">
-                    <img src="img/fighter_3.png" alt="Fighter 3" class="selection-card">
-                </div>
+            </header>
 
-                <h2 class="selection-title second-title">SELECT COMBAT CYBERWARE</h2>
-                <p class="selection-subtitle">Augment your fighter with combat technology to generate 100 possible combinations</p>
-                <div class="selection-container">
-                    <img src="img/cyberware_1.png" alt="Cyberware - Strider" class="selection-card">
-                    <img src="img/cyberware_2.png" alt="Cyberware - Chainsaw Knuckles" class="selection-card">
-                    <img src="img/cyberware_3.png" alt="Cyberware - Adrenal+" class="selection-card">
-                </div>
-                <h2 class="selection-title second-title">ANNIHILATE YOUR OPPONENT</h2>
-                <p class="selection-subtitle">Fight over six rounds, build powerful combos, and win by delivering a definitive KO or ending the match with more HP</p>
-                <div class="gameplay-section">
-                    <div class="gameplay-text">
-                        <h3 class="feature-title">Strategic Depth with Fast-Paced Mechanics</h3>
-                        <ul class="feature-list">
-                            <li><strong>Zero Downtime:</strong> Simultaneous action selection and a real-time combo system make every second actionable for both players.</li>
-                            <li><strong>Cards Synergies:</strong> Manage your hand to build and unleash hundreds of devastating combos.</li>
-                            <li><strong>Tactical Movement:</strong> Maneuver your fighter across a 2D Arena to collect power-ups and gain a positional advantage.</li>
-                        </ul>
+            <!-- Main Landmark with Core Page Content -->
+            <main>
+                <section class="fighter-selection">
+                    <h2 class="selection-title">Select Your Fighter</h2>
+                    <p class="selection-subtitle">Choose from ten Teknoboxers, each with a unique talent</p>
+                    <div class="selection-container">
+                        <img src="img/fighter_1.webp" alt="Fighter 1" class="selection-card">
+                        <img src="img/fighter_2.webp" alt="Fighter 2" class="selection-card">
+                        <img src="img/fighter_3.webp" alt="Fighter 3" class="selection-card">
                     </div>
-                    <div class="gameplay-image">
-                        <img src="img/game_1.png" alt="Teknoboxa Gameplay" class="feature-image">
-                    </div>
-                </div>
-                <div class="gameplay-section-reverse">
-                    <div class="gameplay-image">
-                        <img src="img/arena.png" alt="Teknoboxa Arena" class="feature-image">
-                    </div>
-                    <div class="gameplay-text">
-                        <h3 class="feature-title">Dominate the Arena</h3>
-                        <p class="feature-description">Move and <strong>collect power units</strong> to charge your cyberware and trigger its devastating effects. Dictate the pace of the fight by outmaneuvering your opponent: secure favorable positioning to <strong>earn dice modifiers</strong>, and always <strong>keep the striking distance in check</strong>.</p>
-                    </div>
-                </div>
 
-                <div class="gameplay-section">
-                    <div class="gameplay-text">
-                        <h3 class="feature-title">Create your tactic for victory</h3>
-                        <p class="feature-description">Mix Strike, Guard, Counterstrike, and Slip with 32 special techniques. With <strong>hundreds of combinations</strong>, forge a playstyle to adapt to any threat and exploit enemy weaknesses. But watch out! Rolling a <strong>triple-six</strong> on the dice can knock anyone down and shatter even the best hardware to pieces.</p>
+                    <h2 class="selection-title second-title">SELECT COMBAT CYBERWARE</h2>
+                    <p class="selection-subtitle">Augment your fighter with combat technology to generate 100 possible combinations</p>
+                    <div class="selection-container">
+                        <img src="img/cyberware_1.webp" alt="Cyberware - Strider" class="selection-card">
+                        <img src="img/cyberware_2.webp" alt="Cyberware - Chainsaw Knuckles" class="selection-card">
+                        <img src="img/cyberware_3.webp" alt="Cyberware - Adrenal+" class="selection-card">
                     </div>
-                    <div class="gameplay-image">
-                        <img src="img/teks.png" alt="Teknoboxa Game Box" class="feature-image">
-                    </div>
-                </div>
 
-                <div class="final-call-to-action">
-                    <div class="brand-footer">
-                        <h1 class="brand-title">TEKNOBOXA</h1>
-                        <p class="brand-subtitle">Neon Arenas</p>
+                    <h2 class="selection-title second-title">ANNIHILATE YOUR OPPONENT</h2>
+                    <p class="selection-subtitle">Fight over six rounds, build powerful combos, and win by delivering a definitive KO or ending the match with more HP</p>
+                    
+                    <div class="gameplay-section">
+                        <div class="gameplay-text">
+                            <h3 class="feature-title">Strategic Depth with Fast-Paced Mechanics</h3>
+                            <ul class="feature-list">
+                                <li><strong>Zero Downtime:</strong> Simultaneous action selection and a real-time combo system make every second actionable for both players.</li>
+                                <li><strong>Cards Synergies:</strong> Manage your hand to build and unleash hundreds of devastating combos.</li>
+                                <li><strong>Tactical Movement:</strong> Maneuver your fighter across a 2D Arena to collect power-ups and gain a positional advantage.</li>
+                            </ul>
+                        </div>
+                        <div class="gameplay-image">
+                            <img src="img/game_1.webp" alt="Teknoboxa Gameplay" class="feature-image">
+                        </div>
                     </div>
-                    <p>A fight to the finish is about to start. Will you dominate through superior tactics or relentless aggression?</p>
-                    <div class="game-icons">
-                        <img src="img/box_icons_yellow.png" alt="Game Icons" class="icons-image">
+                    
+                    <div class="gameplay-section-reverse">
+                        <div class="gameplay-image">
+                            <img src="img/arena.webp" alt="Teknoboxa Arena" class="feature-image">
+                        </div>
+                        <div class="gameplay-text">
+                            <h3 class="feature-title">Dominate the Arena</h3>
+                            <p class="feature-description">Move and <strong>collect power units</strong> to charge your cyberware and trigger its devastating effects. Dictate the pace of the fight by outmaneuvering your opponent: secure favorable positioning to <strong>earn dice modifiers</strong>, and always <strong>keep the striking distance in check</strong>.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="footer-bar bottom-signup">
-                <div class="footer-text">
-                    <h3>Get an early VIP Bonus!</h3>
-                    <p>Sign up now to receive an exclusive <strong>Digital Zine</strong> when we launch!</p>
+                    <div class="gameplay-section">
+                        <div class="gameplay-text">
+                            <h3 class="feature-title">Create your tactic for victory</h3>
+                            <p class="feature-description">Mix Strike, Guard, Counterstrike, and Slip with 32 special techniques. With <strong>hundreds of combinations</strong>, forge a playstyle to adapt to any threat and exploit enemy weaknesses. But watch out! Rolling a <strong>triple-six</strong> on the dice can knock anyone down and shatter even the best hardware to pieces.</p>
+                        </div>
+                        <div class="gameplay-image">
+                            <img src="img/teks.webp" alt="Teknoboxa Game Box" class="feature-image">
+                        </div>
+                    </div>
+
+                    <div class="final-call-to-action">
+                        <div class="brand-footer">
+                            <h2 class="brand-title">TEKNOBOXA</h2>
+                            <p class="brand-subtitle">Neon Arenas</p>
+                        </div>
+                        <p>A fight to the finish is about to start. Will you dominate through superior tactics or relentless aggression?</p>
+                        <div class="game-icons">
+                            <img src="img/box_icons_yellow.webp" alt="Game Icons" class="icons-image">
+                        </div>
+                    </div>
+                </section>
+
+                <div class="footer-bar bottom-signup">
+                    <div class="footer-text">
+                        <h2>Get an early VIP Bonus!</h2>
+                        <p>Sign up now to receive an exclusive <strong>Digital Zine</strong> when we launch!</p>
+                    </div>
+                    <form class="subscribe-form" action="https://formspree.io/f/mkovywpg" method="POST">
+                        <input type="email" placeholder="Enter your email" name="email" aria-label="Email address" required>
+                        <button type="submit">Signup for our launch!</button>
+                    </form>
                 </div>
-                <form class="subscribe-form" action="https://formspree.io/f/mkovywpg" method="POST">
-                    <input type="email" placeholder="Enter your email" name="email" required>
-                    <button type="submit">Signup for our launch!</button>
-                </form>
-            </div>
-            
+            </main>
+
+            <!-- Footer Landmark -->
             <footer class="site-footer">
                 <div class="footer-left">Powered by GitHub Pages</div>
                 <div class="footer-right">
