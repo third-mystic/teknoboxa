@@ -170,6 +170,14 @@ body {
     font-size: 1em;
     width: 100%;
     box-sizing: border-box; /* Include padding in width */
+    transition: all 0.3s ease;
+}
+
+.subscribe-form input:focus {
+    outline: none;
+    border-color: #00ffff; /* Neon Cyan border */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Neon Cyan glow */
+    background-color: rgba(0, 255, 255, 0.1);
 }
 
 .subscribe-form input::placeholder {
@@ -300,6 +308,13 @@ body {
     color: #1a0a2a;
 }
 
+.footer-bar .subscribe-form input:focus {
+    outline: none;
+    border-color: #1a0a2a;
+    box-shadow: 0 0 10px rgba(26, 10, 42, 0.5);
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
 .footer-bar .subscribe-form input::placeholder {
     color: rgba(26, 10, 42, 0.6);
 }
@@ -346,29 +361,29 @@ body {
     text-shadow: none;
 }
 
-/* Title Glitch Effects */
-.selection-title[class*="glitch-"] {
+/* Glitch Effects */
+[class*="glitch-"] {
     transition: none !important; /* Instant jump to glitch state */
 }
 
-.selection-title.glitch-1 {
+.glitch-1 {
     text-shadow: 4px 0 0 #00ffff, -4px 0 0 #ff00ff;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 
-.selection-title.glitch-2 {
+.glitch-2 {
     text-shadow: -6px -2px 0 red, 6px 2px 0 blue;
-    color: rgba(200, 200, 255, 0.9);
+    color: rgba(200, 200, 255, 0.9) !important;
 }
 
-.selection-title.glitch-3 {
+.glitch-3 {
     text-shadow: 2px 2px 0 lime, -2px -2px 0 magenta;
-    color: #ccffff;
+    color: #ccffff !important;
 }
 
-.selection-title.glitch-4 {
+.glitch-4 {
     text-shadow: -5px 1px 0 #00ffff, 3px -1px 0 #ff00ff, 0px 0px 5px white;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.4) !important;
 }
 
 .selection-subtitle {

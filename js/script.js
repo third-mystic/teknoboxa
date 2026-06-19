@@ -31,8 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    // Success: replace the form content
-                    form.innerHTML = '<div class="success-message">You are signed up!</div>';
+                    // Success: replace the form content on all subscription forms
+                    subscribeForms.forEach(f => {
+                        f.innerHTML = '<div class="success-message">You are signed up!</div>';
+                    });
                 } else {
                     throw new Error('Form submission failed');
                 }
@@ -182,5 +184,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             lastActiveCard = null;
         }
+    });
+
+    // Glitch effect on subscription buttons on hover at random intervals of 2s to 6s
+    const subscribeButtons = document.querySelectorAll('.subscribe-form button');
+    
+    subscribeButtons.forEach(button => {
+        let glitchTimer = null;
+        
+        const triggerGlitch = () => {
+            const glitchType = Math.floor(Math.random() * 4) + 1;
+            const glitchClass = `glitch-${glitchType}`;
+            
+            button.classList.add(glitchClass);
+            
+            setTimeout(() => {
+                button.classList.remove(glitchClass);
+            }, Math.floor(Math.random() * 120) + 80);
+            
+            const nextDelay = Math.random() * 4000 + 2000;
+            glitchTimer = setTimeout(triggerGlitch, nextDelay);
+        };
+        
+        button.addEventListener('mouseenter', () => {
+            triggerGlitch();
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            clearTimeout(glitchTimer);
+            button.classList.remove('glitch-1', 'glitch-2', 'glitch-3', 'glitch-4');
+        });
     });
 });
