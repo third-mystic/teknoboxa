@@ -67,7 +67,10 @@
                         </div>
                     </div>
                     <div class="image-section">
-                        <img src="img/image_1.webp" alt="Teknoboxa - Neon Arenas" class="hero-image">
+                        <picture>
+                            <source srcset="img/image_1_mobile.webp" media="(max-width: 767px)">
+                            <img src="img/image_1.webp" alt="Teknoboxa - Neon Arenas" class="hero-image" fetchpriority="high">
+                        </picture>
                     </div>
                 </div>
                 <div class="footer-bar">
